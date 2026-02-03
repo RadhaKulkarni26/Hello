@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quick Question 😏</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #c2e9fb, #fcb69f);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        background: white;
+        padding: 45px 60px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+        animation: popIn 1s ease;
+        max-width: 420px;
+    }
+
+    h1 {
+        font-size: 40px;
+        color: #ff6f61;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 20px;
+        color: #555;
+    }
+
+    .buttons {
+        margin-top: 30px;
+    }
+
+    button {
+        padding: 14px 34px;
+        font-size: 18px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 0 10px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .yes {
+        background: linear-gradient(135deg, #56ab2f, #a8e063);
+        color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .no {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+        transform: scale(1.1);
+    }
+
+    .result {
+        margin-top: 30px;
+        font-size: 36px;
+        font-weight: bold;
+        display: none;
+        animation: fadeIn 0.8s ease;
+    }
+
+    .hurray {
+        color: #2ecc71;
+    }
+
+    .sad {
+        color: #555;
+    }
+
+    @keyframes popIn {
+        from { transform: scale(0.6); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .confetti, .teardrop {
+        position: absolute;
+        font-size: 24px;
+        animation: floatUp 4s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-110vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Shi kele ka? 💩</h1>
+    <p>Honest answers only 😌</p>
+
+    <div class="buttons">
+        <button class="yes" onclick="yesClicked()">Yes</button>
+        <button class="no" onclick="noClicked()">No</button>
+    </div>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+function yesClicked() {
+    const r = document.getElementById("result");
+    r.style.display = "block";
+    r.className = "result hurray";
+    r.innerHTML = "🎉 HURRAYYYY! 🎉";
+    launchEmojis(["🎉","✨","😂","💩"]);
+}
+
+function noClicked() {
+    const r = document.getElementById("result");
+    r.style.display = "block";
+    r.className = "result sad";
+    r.innerHTML = "😔 Oh nooo...";
+    launchEmojis(["😔","🥲","💧"]);
+}
+
+function launchEmojis(list) {
+    for (let i = 0; i < 15; i++) {
+        const e = document.createElement("div");
+        e.className = Math.random() > 0.5 ? "confetti" : "teardrop";
+        e.innerText = list[Math.floor(Math.random() * list.length)];
+        e.style.left = Math.random() * 100 + "vw";
+        e.style.bottom = "-30px";
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 4000);
+    }
+}
+</script>
+
+</body>
+</html>
