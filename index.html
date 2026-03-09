@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puzzle Apology</title>
 
 <style>
@@ -22,6 +23,7 @@ text-align:center;
 h1{
 color:#444;
 margin-bottom:10px;
+font-size:3rem;
 }
 
 .board{
@@ -85,9 +87,41 @@ opacity:0;
 
 .line{
 margin-top:25px;
-font-size:24px;
+font-size:1.8rem;
 color:#555;
 font-weight:bold;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width:600px){
+
+.board{
+grid-template-columns:repeat(5,70px);
+gap:10px;
+margin-top:30px;
+}
+
+.target{
+width:70px;
+height:70px;
+}
+
+.piece{
+width:70px;
+height:70px;
+font-size:34px;
+}
+
+h1{
+font-size:2.2rem;
+}
+
+.line{
+font-size:1.5rem;
+margin-top:20px;
+}
+
 }
 
 </style>
@@ -95,7 +129,7 @@ font-weight:bold;
 
 <body>
 
-<h1>Putting the messed up  pieces together…</h1>
+<h1>Putting the messed up pieces together…</h1>
 
 <div class="board" id="board">
 <div class="target"></div>
@@ -159,7 +193,6 @@ p.innerText="❤️";
 });
 
 },4500);
-
 
 
 /* floating flowers */
